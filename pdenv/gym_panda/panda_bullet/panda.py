@@ -14,7 +14,7 @@ class Panda():
 
     def __init__(self, basePosition=[0,0,0]):
         self.init_pos = [0.0, -np.pi/6, 0.0, -2*np.pi/4-np.pi/2, 0.0, np.pi/2+np.pi/3, np.pi/4, 0.0, 0.0, 0.03, 0.03]
-        self.urdfRootPath="C:\\Users\\Yilun\\Desktop\\Robot\\pdenv\\gym_panda\\panda_bullet\\assets"
+        self.urdfRootPath="gym_panda\\panda_bullet\\assets"
         #self.urdfRootPath = '/iliad/u/yilunhao/pdenv/gym_panda/gym_panda/panda_bullet/assets' #pybullet_data.getDataPath()
         self.panda = p.loadURDF(os.path.join(self.urdfRootPath,"franka_panda","panda.urdf"),useFixedBase=True,basePosition=basePosition)
         self.status = "abled"

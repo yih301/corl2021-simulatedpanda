@@ -55,16 +55,18 @@ parser.add_argument('--restore_model', default=None)
 parser.add_argument('--discount', type=float, default=0.9)
 parser.add_argument('--discount_train', action='store_true')
 parser.add_argument('--mode',help='dis or normal to create rl model for disabled panda or normal panda')
+parser.add_argument('--disdata',help='disabled panda data')
+parser.add_argument('--normaldata',help='normal panda data')
 
 args = parser.parse_args()
 
 if args.mode == 'normal':
-    data =  pickle.load(open('data\\dis5.pkl', 'rb')) #48 traj
+    data =  pickle.load(open(args.normaldata, 'rb')) #48 traj
     test_demos = data
     demos = data
     num=48
 else:
-    data =  pickle.load(open('data\\normal48.pkl', 'rb')) #5 traj
+    data =  pickle.load(open(args.disdata, 'rb')) #5 traj
     disabledpdata = data
     test_demos = data
     demos = data

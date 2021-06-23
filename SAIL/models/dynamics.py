@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import numpy as np
-from ..utils.tools import swish
+from utils.tools import swish
 from torch.nn import functional as F
 import tqdm
 import math

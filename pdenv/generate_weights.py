@@ -4,16 +4,15 @@ import gym
 #import gym_circle_move
 import numpy as np
 import matplotlib.pyplot as plt
-import time
 
 import gym_panda
-from gym_panda.wrapper_env.wrapper import *
 import argparse
 from itertools import count
 
 import scipy.optimize
 
 import torch
+import pickle
 from models import *
 from replay_memory import Memory
 from running_state import ZFilter
@@ -49,6 +48,7 @@ def generate_weight(DISMODEL_PATH,NORMALMODEL_PATH, FULL_DIS_DEMONS, FULL_NORMAL
 
     weights = np.zeros(disabled.shape[0] + normal.shape[0])  #shape is num of traj
     for j in range(disabled.shape[0]): 
+        print("disabled",j)
         trajweight = np.zeros(disabled[j].shape)  #shape is length of current traj
         state = env.reset(j,"dis")
         i = 0
@@ -91,10 +91,10 @@ def generate_weight(DISMODEL_PATH,NORMALMODEL_PATH, FULL_DIS_DEMONS, FULL_NORMAL
             
 
 if __name__ == "__main__":
-    generate_weight('data\\dis5_3model',
-                    'data\\normal48_3model',  
-                    'data\\dis5.pkl',
-                    'data\\normal48.pkl',
-                    'data\\dis5ee.pkl',
-                    'data\\normal48ee.pkl',
-                    'data\\weights_3.pkl')
+    generate_weight('..\\data\\dis5_3model',
+                    '..\\data\\normal48_3model',  
+                    '..\\data\\dis5.pkl',
+                    '..\\data\\normal48.pkl',
+                    '..\\data\\dis5ee.pkl',
+                    '..\\data\\normal48ee.pkl',
+                    '..\\data\\weights_3.pkl')

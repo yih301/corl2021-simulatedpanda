@@ -1,6 +1,8 @@
 ### Set up the environment
 
-### Data description(files in data folder)
+Needed packages: Python, torch, gym, pybullet, tensorflow, stable_baselines, random, numpy, math, pickle
+
+### Data description(files in `data` folder)
 `dis5.pkl`: contains 5 expert trajs for 3DoF
 
 `normal48.pkl`: contains 48 expert trajs for 7DoF
@@ -22,25 +24,28 @@
 `3_normal.pt`: no feasibility VAE model
 
 ### How to create feasibility model
-The file to create feasibility model is main_feasibility.py.
+cd into `pdenv` directory, the file to create feasibility model is main_feasibility.py.
 
 Important flags:
 
 --env-name: Use 'feasibilitypanda-v0' as the environment name
 
---mode: Use 'dis' to create rl model for 3DoF robot arm, and use 'normal' to create rl model for 7DoF robot arm.
+--mode: Use 'dis' to create rl model for 3DoF robot arm, and use 'normal' to create rl model for 7DoF robot arm
+
 
 Sample call:
 
-`python main_feasibility.py --env-name "feasibilitypanda-v0" --seed 3 --save_path "./data" --discount 1 --mode 'dis'`
+`python main_feasibility.py --env-name "feasibilitypanda-v0" --seed 3 --save_path "../data" --discount 1 --mode 'dis' --disdata '../data/dis5.pkl' --normaldata '../data/normal48.pkl'`
 
 The file to generate weights(feasibility) from the rl model is generate_weights.py, this will be used to create VAE model
 
 Sample call:
 
-`python generate_weight.py`
+`python generate_weights.py`
 
 ### How to create VAE model
+cd into `SAIL` directory
+
 Sample call:
 
 To train VAE model with feasibility:
@@ -59,6 +64,9 @@ To train VAE model without feasibility(baseline):
 p.connect(p.DIRECT) # disable GUI
 p.connect(p.GUI) # Enable GUI
 ```
+
+#### Window/Linux
+This version is able to run directly in Windows, change path in panda.py, generate_weights.py, and panda_env.py to use in Linux
 
 
 

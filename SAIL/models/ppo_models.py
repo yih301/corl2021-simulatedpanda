@@ -1,8 +1,8 @@
 import torch.nn as nn
 import torch
-from ..utils.math import *
+from utils.math import *
 from torch.distributions import Normal
-from .sac_models import weights_init_
+from models.sac_models import weights_init_
 from torch.distributions.categorical import Categorical
 
 class Value(nn.Module):

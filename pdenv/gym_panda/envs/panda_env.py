@@ -7,7 +7,6 @@ import os
 import numpy as np
 import pybullet as p
 import pybullet_data
-import pdb
 import copy
 import pickle
 
@@ -151,8 +150,8 @@ class FeasibilityPandaEnv(PandaEnv):
   def __init__(self, panda_type=FeasibilityPanda):
     super(FeasibilityPandaEnv, self).__init__(panda_type=panda_type)
     self.action_space = spaces.Box(low=np.array([-1., -1.]), high=np.array([1., 1.]), dtype=np.float32)
-    self.gt_data1 =  pickle.load(open('data\\dis5.pkl', 'rb'))
-    self.gt_data2 =  pickle.load(open('data\\normal48.pkl', 'rb'))
+    self.gt_data1 =  pickle.load(open('..\\data\\dis5.pkl', 'rb'))
+    self.gt_data2 =  pickle.load(open('..\\data\\normal48.pkl', 'rb'))
     self.time_step = 0
     self.reward = 0
     self.eps_len = 8000
